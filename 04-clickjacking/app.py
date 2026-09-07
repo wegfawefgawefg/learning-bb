@@ -5,7 +5,11 @@ app = Flask(__name__)
 
 @app.get("/vuln")
 def vuln():
-    return '<button style="margin:70px">Delete project</button>'
+    return """<!doctype html>
+    <html lang="en">
+    <head><meta charset="utf-8"><title>Project settings</title></head>
+    <body><button style="margin: 70px">Delete project</button></body>
+    </html>"""
 
 
 @app.get("/fixed")
@@ -18,7 +22,21 @@ def fixed():
 
 @app.get("/attack")
 def attack():
-    return "<style>iframe{opacity:.15}.x{position:absolute;left:75px;top:75px}</style><button class=x>Claim prize</button><iframe src=/vuln width=400 height=180></iframe>"
+    return """<!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Clickjacking demonstration</title>
+      <style>
+        iframe { opacity: 0.15; }
+        .lure { position: absolute; left: 75px; top: 75px; }
+      </style>
+    </head>
+    <body>
+      <button class="lure">Claim prize</button>
+      <iframe src="/vuln" width="400" height="180" title="Framed target"></iframe>
+    </body>
+    </html>"""
 
 
 app.run(port=5000)
