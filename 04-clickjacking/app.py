@@ -1,6 +1,7 @@
-from flask import Flask, make_response
+from flask import Flask, jsonify, make_response
 
 app = Flask(__name__)
+project = {"deleted": False}
 
 
 @app.get("/vuln")
@@ -8,8 +9,31 @@ def vuln():
     return """<!doctype html>
     <html lang="en">
     <head><meta charset="utf-8"><title>Project settings</title></head>
-    <body><button style="margin: 70px">Delete project</button></body>
+    <body>
+      <form method="post" action="/delete">
+        <button style="margin: 70px">Delete project</button>
+      </form>
+    </body>
     </html>"""
+
+
+@app.post("/delete")
+def delete_project():
+    project["deleted"] = True
+    return """<!doctype html>
+    <html lang="en"><head><meta charset="utf-8"><title>Deleted</title></head>
+    <body><strong>Project deleted</strong></body></html>"""
+
+
+@app.post("/reset")
+def reset_project():
+    project["deleted"] = False
+    return jsonify(project)
+
+
+@app.get("/status")
+def project_status():
+    return jsonify(project)
 
 
 @app.get("/fixed")
@@ -28,13 +52,42 @@ def attack():
       <meta charset="utf-8">
       <title>Clickjacking demonstration</title>
       <style>
-        iframe { opacity: 0.15; }
-        .lure { position: absolute; left: 75px; top: 75px; }
+        .stage { position: relative; width: 400px; height: 180px; }
+        .lure {
+          position: absolute;
+          left: 78px;
+          top: 78px;
+          z-index: 1;
+          pointer-events: none;
+        }
+        iframe {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          width: 400px;
+          height: 180px;
+          border: 1px solid #aaa;
+          opacity: 0.01;
+        }
       </style>
     </head>
     <body>
-      <button class="lure">Claim prize</button>
-      <iframe src="/vuln" width="400" height="180" title="Framed target"></iframe>
+      <h1>Attacker page</h1>
+      <p>The visible lure is underneath a nearly transparent cross-origin iframe.</p>
+      <div class="stage">
+        <button class="lure">Claim prize</button>
+        <iframe src="http://localhost:5000/vuln" title="Framed target"></iframe>
+      </div>
+      <p>Lab observer: <strong id="status">project exists</strong></p>
+      <form method="post" action="/reset"><button>Reset project</button></form>
+      <script>
+        setInterval(async () => {
+          const state = await fetch("/status").then(response => response.json());
+          document.querySelector("#status").textContent = state.deleted
+            ? "project was deleted"
+            : "project exists";
+        }, 300);
+      </script>
     </body>
     </html>"""
 
