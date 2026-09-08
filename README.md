@@ -1,7 +1,21 @@
 # learning-bb
 
+<p align="center">
+  <img src="assets/banner.svg" alt="Learning BB: realistic bug bounty labs for engineers" width="100%">
+</p>
+
+> **Educational security lab.** This repository contains deliberately vulnerable
+> applications for learning how web-security failures arise, how investigators
+> demonstrate their impact, and how engineers remove the underlying trust-boundary
+> mistake.
+
 Independent bug-bounty lessons built around small, believable products. Each
 runnable case separates the target, investigation, and corrected implementation.
+
+The course is designed for engineers: each case connects an attacker objective to
+a concrete product consequence, then shows the corresponding defensive design.
+The included targets use planted accounts, data, secrets, and state so the proofs
+remain self-contained.
 
 ```bash
 uv sync
@@ -26,4 +40,3 @@ Start with the topic README and challenge. Avoid opening `exploit/` or `patched/
 until you have mapped the feature and attempted a manual proof in your proxy.
 
 See [COURSE-METHOD.md](COURSE-METHOD.md) for the investigation loop.
-

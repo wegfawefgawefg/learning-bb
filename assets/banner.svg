@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420" role="img" aria-labelledby="title description">
+  <title id="title">Learning BB</title>
+  <desc id="description">Realistic bug bounty labs for engineers. Break the assumption, prove the impact, fix the boundary.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10191b"/>
+      <stop offset="0.6" stop-color="#172326"/>
+      <stop offset="1" stop-color="#0d1416"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#7fa9a1" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="420" rx="24" fill="url(#background)"/>
+  <rect width="1400" height="420" rx="24" fill="url(#grid)"/>
+
+  <circle cx="1260" cy="74" r="150" fill="#e76537" opacity="0.09" filter="url(#softGlow)"/>
+  <circle cx="1180" cy="360" r="210" fill="#4ca594" opacity="0.08" filter="url(#softGlow)"/>
+
+  <g transform="translate(76 58)">
+    <rect width="1248" height="304" rx="15" fill="#0b1113" stroke="#49625f" stroke-width="2"/>
+    <path d="M0 54H1248" stroke="#49625f" stroke-width="2"/>
+    <circle cx="27" cy="27" r="7" fill="#e76537"/>
+    <circle cx="51" cy="27" r="7" fill="#d5a840"/>
+    <circle cx="75" cy="27" r="7" fill="#4ca594"/>
+    <text x="624" y="34" fill="#78918d" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="15" text-anchor="middle">~/learning-bb/course</text>
+
+    <text x="48" y="132" fill="#e76537" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="24" font-weight="700">LEARNING //</text>
+    <text x="48" y="224" fill="#f2ead3" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="104" font-weight="800" letter-spacing="-6">BUG BOUNTY</text>
+    <text x="53" y="269" fill="#a9c0bb" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="22">realistic security labs for engineers</text>
+
+    <g transform="translate(904 88)" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="16">
+      <rect width="292" height="158" rx="10" fill="#111c1e" stroke="#324b48"/>
+      <text x="22" y="34" fill="#729d95">01</text>
+      <text x="58" y="34" fill="#d8dfd9">break the assumption</text>
+      <text x="22" y="72" fill="#729d95">02</text>
+      <text x="58" y="72" fill="#d8dfd9">prove the impact</text>
+      <text x="22" y="110" fill="#729d95">03</text>
+      <text x="58" y="110" fill="#d8dfd9">fix the boundary</text>
+      <path d="M22 132H270" stroke="#e76537" stroke-width="3"/>
+    </g>
+  </g>
+
+  <g transform="translate(76 382)" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="14" font-weight="700" letter-spacing="2">
+    <text fill="#e76537">EDUCATIONAL</text>
+    <text x="150" fill="#78918d">CHALLENGE / EXPLOIT / PATCHED</text>
+  </g>
+</svg>
