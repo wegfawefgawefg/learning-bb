@@ -26,3 +26,12 @@ The same-origin policy normally stops the attacker page from reading the target
 response, but ordinary HTML forms can still send requests. Defend with framework
 CSRF middleware, suitable `SameSite` cookies, origin validation, and no
 state-changing GET endpoints.
+
+## Why an attacker cares
+
+The attacker wants the victim's browser to lend its authenticated authority to a
+chosen action without revealing the session secret. Useful outcomes include
+changing recovery details, adding an integration, creating a key, or initiating a
+transaction. A request that only reads data the attacker cannot observe, changes
+no durable state, or is blocked by `SameSite`, tokens, or re-authentication may
+have no useful consequence.

@@ -7,11 +7,20 @@ by moving attacker-controlled data into an executable DOM sink.
 URL fragment -> location.hash -> innerHTML -> active elements
 ```
 
-Run `app.py`, then `solve.py`, and open both URLs. Fragments are not sent in HTTP
-requests, making this example entirely client-side. The vulnerable page assigns
-the fragment to `innerHTML`; the fixed page uses `textContent`.
+Run the challenge, use `/profile-preview#Alice` normally, then open the URL emitted
+by `exploit/solve.py`. Fragments are not sent in HTTP requests, making the source
+and sink entirely client-side. The vulnerable frontend assigns the decoded value
+to `innerHTML`; the patched frontend uses `textContent`.
 
 Other sources include `location.search`, `document.referrer`, messages, and API
 responses. Dangerous sinks include `innerHTML`, `outerHTML`,
 `insertAdjacentHTML`, `document.write`, string timers, and `eval`.
+
+## Why an attacker cares
+
+As with reflected XSS, the attacker wants code execution in the target origin;
+the difference is where the vulnerable transformation happens. A crafted link can
+turn client-side routing or preview logic into same-origin API access, UI changes,
+or authenticated actions. If the value never reaches an executable sink, control
+of the fragment alone is harmless.
 

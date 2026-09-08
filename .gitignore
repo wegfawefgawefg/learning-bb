@@ -1,6 +1,6 @@
 .venv/
+.ruff_cache/
 __pycache__/
 *.db
 pwned.txt
 secret.txt
-

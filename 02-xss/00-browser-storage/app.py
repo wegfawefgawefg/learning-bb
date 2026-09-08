@@ -24,9 +24,7 @@ def index():
         """
     )
     response.set_cookie("readable_cookie", "visible-to-javascript")
-    response.set_cookie(
-        "session", "hidden-from-javascript", httponly=True, samesite="Lax"
-    )
+    response.set_cookie("session", "hidden-from-javascript", httponly=True, samesite="Lax")
     return response
 
 

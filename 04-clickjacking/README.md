@@ -14,3 +14,12 @@ Change the iframe source to `/fixed` and restart the app. Firefox will refuse to
 frame it because the fixed response uses CSP `frame-ancestors 'none'` and
 `X-Frame-Options: DENY`. Re-authentication for critical actions adds another
 useful boundary.
+
+## Why an attacker cares
+
+Framing is only the primitive. The attacker wants a victim who is already logged
+in to perform a consequential target action while believing they are interacting
+with the attacker's page. Delete, transfer, permission-grant, camera-enable, and
+OAuth-consent controls are useful targets. Read-only pages, actions requiring
+fresh confirmation, and pages that cannot be aligned reliably produce little or
+no practical impact.

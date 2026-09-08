@@ -5,3 +5,9 @@ deduplicate responses, then manually validate. Run `fuzz.py`; it uses a tiny
 corpus and exposes response deviations. Extend it with JSON/content-type
 mutations, body normalization, saved reproducers, and a request-rate limit.
 
+## Why an attacker cares
+
+Fuzzing is a discovery amplifier, not an impact by itself. It finds parser edges,
+hidden states, crashes, and response differentials that deserve a human
+hypothesis. A useful workflow converts an anomaly into a stable boundary crossing;
+thousands of unexplained `500` responses are noise rather than findings.

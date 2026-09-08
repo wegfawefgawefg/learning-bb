@@ -12,11 +12,7 @@ def vuln():
 @app.post("/fixed")
 def fixed():
     v = request.get_json(force=True)
-    return (
-        v
-        if set(v) == {"theme"} and v["theme"] in ("light", "dark")
-        else ("bad schema", 400)
-    )
+    return v if set(v) == {"theme"} and v["theme"] in ("light", "dark") else ("bad schema", 400)
 
 
 app.run(port=5000)

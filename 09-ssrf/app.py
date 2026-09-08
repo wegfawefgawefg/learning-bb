@@ -21,11 +21,7 @@ def vuln():
 
 @app.get("/fixed")
 def fixed():
-    return (
-        "known upstream"
-        if request.args.get("source") == "news"
-        else ("bad source", 400)
-    )
+    return "known upstream" if request.args.get("source") == "news" else ("bad source", 400)
 
 
 app.run(port=5000, threaded=True)
