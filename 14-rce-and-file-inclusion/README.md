@@ -1,9 +1,10 @@
 # RCE, command injection, file inclusion
 
-Shells, `eval`, templates, imports, and includes are interpreter boundaries. This
-lab uses a toy shell: append `cat flag.txt` without exposing a real workstation
-shell. Replace command strings with structured APIs and argument arrays, validate
-values, drop privileges, and isolate risky processors.
+Shells, `eval`, templates, imports, and includes are distinct boundaries. This
+topic now has two cases. `case-01-diagnostics` uses a harmless second `printf` to
+prove shell separator injection, then replaces the shell string with an argument
+array and validation. `case-02-document-viewer` escapes a template directory;
+its patch maps opaque document IDs to server-owned paths.
 
 ## Why an attacker cares
 
@@ -13,3 +14,7 @@ services, or controlling generated output. The valuable boundary is not simply
 that a metacharacter is accepted; it is that an interpreter treats attacker data
 as instructions. File inclusion can become disclosure or execution depending on
 the included format and runtime.
+
+Do not collapse every result into “RCE.” Command injection gains interpreter
+behavior. File inclusion may yield only disclosure, or execution when the runtime
+interprets the included content.

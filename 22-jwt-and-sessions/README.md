@@ -15,3 +15,11 @@ A useful token weakness lets the attacker impersonate another subject, extend a
 session, replay a credential, or obtain a claim the server trusts for privilege.
 Editing decoded JSON proves nothing unless the modified token is accepted. Every
 claim test should end at an authorization decision made differently.
+
+## Case: unsigned role token
+
+Record the issued user token and denied admin request, change only its role claim,
+then repeat the authorization check. Acceptance at the admin endpoint converts
+editable JSON into impact. The patch authenticates bytes before trusting claims;
+real JWTs additionally require strict algorithm, issuer, audience, time, key, and
+token-purpose validation.

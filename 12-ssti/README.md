@@ -11,3 +11,10 @@ Arithmetic proves interpretation, but the desired capability is reaching secrets
 application objects, files, outbound requests, or ultimately server-side code
 execution. The engine, sandbox, exposed context, and process privileges determine
 whether `49` can become real impact.
+
+## Case: campaign email preview
+
+Send a normal greeting, an arithmetic identification probe, and finally a planted
+mail-signing setting available in the template context. That progression separates
+reflection, interpretation, and impact. The patch passes the greeting as data to
+a developer-owned constant template.

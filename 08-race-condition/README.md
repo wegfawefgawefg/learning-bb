@@ -11,3 +11,10 @@ invariant: redeem once, withdraw at most the balance, sell no more than inventor
 or consume one reset token. The attacker gains extra value or bypasses a state
 transition by making checks observe the same stale state. Parallel `200` responses
 without an incorrect final balance or state are not sufficient impact.
+
+## Case: one-use promotional credit
+
+Inspect `/api/account`, redeem once normally, restart, then run the exploit. It
+sends synchronized requests and checks the durable balance. The patched app makes
+check-and-update one critical section; production code should use a transaction,
+conditional update, uniqueness constraint, or idempotency key.

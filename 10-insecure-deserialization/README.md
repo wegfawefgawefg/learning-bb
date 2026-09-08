@@ -11,3 +11,10 @@ runs. A usable gadget chain may execute code, read files, make requests, or alte
 privileged object fields. Merely recognizing a serialized format is not a finding:
 the attacker must control bytes that reach an unsafe decoder, bypass integrity
 checks if present, and demonstrate a consequential property or gadget.
+
+## Case: desktop preference import
+
+First import an ordinary pickled theme to establish the real format. The second
+object has controlled reconstruction behavior and creates a marker file. The
+patch replaces native objects with schema-checked JSON rather than attempting to
+blacklist dangerous classes.

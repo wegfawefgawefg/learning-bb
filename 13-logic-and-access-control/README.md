@@ -11,3 +11,9 @@ will enforce: price, quantity, order, approval, role, invitation state, or accou
 ownership. Altering a client value matters when the authoritative backend accepts
 an impossible business state, such as buying below price or performing an admin
 action. Weird input that is rejected or normalized has no impact.
+
+## Case: checkout pricing
+
+The catalogue advertises the authoritative price. The normal client echoes it in
+an order request; changing only `unit_price` makes the server charge less. The
+patch looks up price in server state and independently constrains quantity.

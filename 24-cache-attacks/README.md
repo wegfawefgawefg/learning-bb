@@ -13,3 +13,10 @@ visitors or store private content under a public key. The attacker looks for an
 input that changes the response but not the cache key. A reflected header on an
 uncached response is not poisoning; persistence and delivery to a clean client
 are the meaningful evidence.
+
+## Case: cached password-reset page
+
+An unkeyed forwarded host changes a reset link. The exploit primes the cache, then
+makes a clean client request and observes the poisoned link. The patch uses a
+relative URL and `no-store`; reflection without persistence would not prove this
+shared-cache consequence.

@@ -5,11 +5,11 @@ victim's browser to submit a state-changing request to another origin. Cookies
 belonging to the destination are attached automatically, so the target can see an
 authenticated request even though the attacker never learns the cookie.
 
-Run both origins:
+The case models an account email change. Run the target and attacker separately:
 
 ```bash
-uv run --with flask app.py       # target:   127.0.0.1:5000
-uv run --with flask attacker.py  # attacker: 127.0.0.1:5001
+uv run python case-01-email-change/challenge/app.py
+uv run python case-01-email-change/exploit/attacker.py
 ```
 
 Visit `http://127.0.0.1:5000/login`, then `http://127.0.0.1:5001`. Submit both
@@ -26,6 +26,11 @@ The same-origin policy normally stops the attacker page from reading the target
 response, but ordinary HTML forms can still send requests. Defend with framework
 CSRF middleware, suitable `SameSite` cookies, origin validation, and no
 state-changing GET endpoints.
+
+The patched application is a separate process. It verifies a synchronizer token
+stored in the server session and validates `Origin`; it does not expose a second
+“fixed” route that would never exist in a real product.
+
 
 ## Why an attacker cares
 

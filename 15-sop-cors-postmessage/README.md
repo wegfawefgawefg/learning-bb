@@ -1,9 +1,10 @@
 # SOP, CORS, postMessage, JSONP
 
-SOP blocks many cross-origin reads, not all sends. Send an arbitrary `Origin` to
-both routes. The vulnerable route reflects it with credentials. Audit
-`postMessage` for exact `event.origin` checks and strict message schemas. JSONP
-is executable cross-origin data and should be retired.
+SOP blocks many cross-origin reads, not all sends. CORS and `postMessage` relax
+different boundaries, so they are separate cases. `case-01-account-api` reflects
+origins while allowing credentials; its patch uses an exact allowlist and `Vary`.
+`case-02-payment-widget` sends receipt data to any messaging window; its patch
+checks exact origin, message shape, and reply destination.
 
 ## Why an attacker cares
 

@@ -15,3 +15,10 @@ An uploaded file may execute in another visitor's origin, overwrite a server
 path, exploit a parser, consume worker resources, or become publicly hosted
 attacker content on a trusted domain. Upload success alone is expected behavior;
 the finding is a boundary crossed during storage, processing, or delivery.
+
+## Case: profile attachment
+
+The proof uploads active HTML and opens the returned application-origin URL. The
+patch constrains declared types, generates names, and forces download. A production
+image pipeline must also verify actual bytes, re-encode content, isolate parsers,
+and preferably serve from a separate non-cookie origin.

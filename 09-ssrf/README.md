@@ -12,3 +12,10 @@ parameter becomes a proxy from a privileged network position. A fetch of public
 content is usually low value; the finding becomes meaningful when it crosses a
 network or credential boundary, exposes a response, or triggers an internal
 state-changing request.
+
+## Case: invoice logo import
+
+The exploit first imports an expected logo, then substitutes an internal
+diagnostics URL. Protected service data returned through the public importer is
+the consequence. The patch replaces arbitrary URLs with server-owned logo IDs;
+real deployments also need egress policy and redirect/DNS revalidation.
