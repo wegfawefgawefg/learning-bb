@@ -20,3 +20,9 @@ secret.txt
 **/documents/
 **/supplier-key.txt
 **/shop.db
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
